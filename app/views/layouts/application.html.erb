@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Tweetfetcher</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body class="metro">
+	<nav class="navigation-bar dark fixed-top"><h2>Tweet Fetcher</h2></nav>   
+	<%= yield %>
+</body>
+</html>

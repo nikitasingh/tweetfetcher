@@ -1,0 +1,12 @@
+<br/>
+<br/>
+<br/>
+
+<% Twitter.user_timeline("TCS_News", {:count => 10}).each do |tweet| %>
+    <div class="tile double live" data-role="live-tile" data-effect="transform">
+	    <div class="tile-content"><%= tweet.text %>.</div>
+	    <div class="tile-content"><%= image_tag(tweet.media[0]["media_url"], :size => tweet.media[0]["sizes"]["thumb"]) if(tweet.media.present?) %></div>
+	</div>
+<% end %>
+
+
