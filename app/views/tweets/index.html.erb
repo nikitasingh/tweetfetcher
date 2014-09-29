@@ -1,11 +1,27 @@
+   
+   
+<% client = Twitter::REST::Client.new do |config|
+  config.consumer_key        = "0EjV9pC0SzaNThnUUneikFnq6"
+  config.consumer_secret     = "2YVAGVJGs5ikOXeMnyVIjF35AmjC4E2cdOEBtkkGM2DebN6fzp"
+  config.access_token        = "616382835-WbT02Ttvcmn24GTvgXbEcSFV5shSWFc5eHyCmCqZ"
+  config.access_token_secret = "Pw0os2QQFtRfr0JbYhG7MODwpKEMtrGvzWzbFjdQV2pKK"
+end
+%>
 <br/>
 <br/>
 <br/>
 
-<% Twitter.user_timeline("TCS_News", {:count => 10}).each do |tweet| %>
-    <div class="tile double live" data-role="live-tile" data-effect="transform">
-	    <div class="tile-content"><%= tweet.text %>.</div>
-	    <div class="tile-content"><%= image_tag(tweet.media[0]["media_url"], :size => tweet.media[0]["sizes"]["thumb"]) if(tweet.media.present?) %></div>
+<% client.user_timeline("TCS_News", {:count => 10}).each do |tweet| %>
+    <div class="tile double live">
+		    <div class="tile-content front"><%= tweet.text %>.</div>
+		    <div class="tile-content back"><%= image_tag(tweet.media[0]["media_url"], :size => tweet.media[0]["sizes"]["thumb"]) if(tweet.media.present?) %></div>
+		    <% if(tweet.urls.present?) %>
+			     <div class="brand bg-dark opacity">
+					<span class="text">
+						<b><%= link_to "Read More", "#{tweet.urls.first[:url]}" %></b>
+					</span>
+				</div>
+			<% end %>
 	</div>
 <% end %>
 
