@@ -1,28 +1,31 @@
-   
-   
-<% client = Twitter::REST::Client.new do |config|
-  config.consumer_key        = "0EjV9pC0SzaNThnUUneikFnq6"
-  config.consumer_secret     = "2YVAGVJGs5ikOXeMnyVIjF35AmjC4E2cdOEBtkkGM2DebN6fzp"
-  config.access_token        = "616382835-WbT02Ttvcmn24GTvgXbEcSFV5shSWFc5eHyCmCqZ"
-  config.access_token_secret = "Pw0os2QQFtRfr0JbYhG7MODwpKEMtrGvzWzbFjdQV2pKK"
-end
-%>
 <br/>
 <br/>
 <br/>
+<br/>
+<div class = "container">
+	<% @tweets.each do |tweet| %>
+	    <div class = 'tile double <%= 'triple' if tweet.media.present?  %>'>
+			    <div class="tile-content front">
+				    <span class="text date"><%= tweet.created_at.strftime("%d-%b-%Y") %></span>
+				    <br/>
+				    <% 
+						linked = tweet.text.gsub( %r{http://[^\s<]+} ) do |url|
+						    "<a href='#{url}' class='text_link'>Link</a>"
+						end
+					%>
+				    <span class="text"><%= linked.html_safe %></span>
+				    <span> <%= image_tag(tweet.media[0]["media_url"], :size => tweet.media[0]["sizes"]["thumb"]) if(tweet.media.present?) %> </span>
+			    </div>
+			    <% if(tweet.urls.present?) %>
+				     <div class="brand bg-dark opacity">
+						<span class="text">
+							<b><%= link_to "Read More", "#{tweet.urls.first[:url]}", target: "_blank" %></b>
+						</span>
+					</div>
+				<% end %>
+		</div>
+	<% end %>
+</div>
 
-<% client.user_timeline("TCS_News", {:count => 10}).each do |tweet| %>
-    <div class="tile double live">
-		    <div class="tile-content front"><%= tweet.text %>.</div>
-		    <div class="tile-content back"><%= image_tag(tweet.media[0]["media_url"], :size => tweet.media[0]["sizes"]["thumb"]) if(tweet.media.present?) %></div>
-		    <% if(tweet.urls.present?) %>
-			     <div class="brand bg-dark opacity">
-					<span class="text">
-						<b><%= link_to "Read More", "#{tweet.urls.first[:url]}" %></b>
-					</span>
-				</div>
-			<% end %>
-	</div>
-<% end %>
 
 

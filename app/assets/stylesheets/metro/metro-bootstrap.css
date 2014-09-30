@@ -4832,7 +4832,7 @@ a {
   margin: 0 10px 10px 0;
   padding: 0;
   background-color: #eeeeee;
-  box-shadow: inset 0px 0px 1px #FFFFCC;
+  box-shadow: 0px 0px 6px #888;
 }
 .metro .tile:hover {
   outline: #999999 solid 3px;
@@ -4845,7 +4845,7 @@ a {
 }
 .metro .tile {
   width: 120px;
-  height: 150px;
+  height: 170px;
   margin: 0 10px 10px 0;
 }
 .metro .tile.half {
@@ -4859,7 +4859,8 @@ a {
   height: 250px;
 }
 .metro .tile.triple {
-  width: 380px;
+  width: 250px;
+  height: 300px
 }
 .metro .tile.triple-vertical {
   height: 380px;
@@ -4898,7 +4899,7 @@ a {
 .metro .tile .tile-content {
   width: 100%;
   height: 100%;
-  padding: 3%;
+  padding: 2%;
   margin: 0;
   display: block;
   position: absolute;
