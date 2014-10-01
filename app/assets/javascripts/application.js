@@ -17,7 +17,6 @@
 //= require_tree .
 
 $(document).ready(function(){
-	alert("hey");
 var $container = $('#masonry');
 // initialize
 $container.masonry({
