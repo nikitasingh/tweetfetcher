@@ -13,10 +13,11 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery-ui
-//= require masonry.pkgd
+//= require masonry.pkgd.js
 //= require_tree .
 
 $(document).ready(function(){
+	alert("hey");
 var $container = $('#masonry');
 // initialize
 $container.masonry({
