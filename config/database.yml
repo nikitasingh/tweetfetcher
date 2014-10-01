@@ -5,15 +5,15 @@
 #   gem 'sqlite3'
 #
 default: &default
-  adapter: postgresql
+  adapter: mysql2
   encoding: unicode
   # For details on connection pooling, see rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: 5
 
-# development:
-#   <<: *default
-#   database: tweetfetcher
+development:
+  <<: *default
+  database: tweetfetcher
 
 # # Warning: The database defined as "test" will be erased and
 # # re-generated from your development database when you run "rake".
