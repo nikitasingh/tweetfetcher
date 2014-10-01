@@ -4853,13 +4853,13 @@ a {
   height: 55px;
 }
 .metro .tile.double {
-  width: 250px;
+  width: 300px;
 }
 .metro .tile.double-vertical {
   height: 250px;
 }
 .metro .tile.triple {
-  width: 250px;
+  width: 300px;
   height: 300px
 }
 .metro .tile.triple-vertical {

@@ -15,17 +15,13 @@
 //= require jquery-ui
 //= require_tree .
 
-// $(document).ready(function(){
-// 	var isHover = false;
-// 	$(".tile").mouseenter(function () {
-// 		console.log($(this).find(".back").html().length !=0);
-// 		if ($(this).find(".back").html()) {
-// 		  $(this).find(".front").hide();
-// 		  $(this).find(".back").show();
-// 		};  
-// 	}).mouseleave(function () {
-// 		$(this).find(".front").show();
-// 		$(this).find(".back").hide();
+$(document).ready(function(){
+var $container = $('#masonry');
+// initialize
+$container.masonry({
+  itemSelector: '.tile',
+  "gutter": 10
 
-// 	});
-// });
+
+});
+});

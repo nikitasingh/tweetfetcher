@@ -1,12 +1,7 @@
 class TweetsController < ApplicationController
 	before_filter :set_twitter_config
   def index
-  	tweets = @client.user_timeline("TCS_News").take(500)
-  	puts tweets.length
-  	@tweets_1 = tweets[0..5]
-  	@tweets_2 = tweets[6..10]
-  	@tweets_3 = tweets[11..15]
-  	@tweets_4 = tweets[16..20]
+  	@tweets = @client.user_timeline("TCS_News", :count => 100)
   end
 
   def set_twitter_config
