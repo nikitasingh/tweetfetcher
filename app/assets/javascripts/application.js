@@ -16,12 +16,47 @@
 //= require_tree .
 
 $(document).ready(function(){
-var $container = $('#masonry');
-// initialize
-$container.masonry({
-  itemSelector: '.tile',
-  "gutter": 10
+	$(".ajax_loader").hide();
+	var $container = $('#masonry');
+	// initialize
+	$container.masonry({
+	  itemSelector: '.tile',
+	  "gutter": 10
+	});
 
+	$('li.title').on('click', function() {
+		month = $(this).text();
+		$.ajax({
+		type: "GET",
+		dataType : 'script',
+	    url: '/tweets/index',
+	    data: {month: month}, 
+	    beforeSend: function(){
+	       $('.container').hide();
+	       $(".ajax_loader").show();
+        },
+		complete: function(){
+		       $('.container').show();
+		       $(".ajax_loader").hide();
+		  }
+		});
+	});
 
-});
+	$('select#handle').on('change', function() {
+		handle = $('#handle :selected').text();
+		$.ajax({
+		type: "GET",
+		dataType : 'script',
+	    url: '/tweets/index',
+	    data: {handle: handle}, 
+	    beforeSend: function(){
+	       $('.container').hide();
+	       $(".ajax_loader").show();
+        },
+		complete: function(){
+		       $('.container').show();
+		       $(".ajax_loader").hide();
+		  }
+		});
+	});
 });

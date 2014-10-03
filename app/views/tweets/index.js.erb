@@ -1,0 +1,7 @@
+$('.tweets').html("<%= escape_javascript(render(:partial => 'tweet')) %>");
+var $container = $('#masonry');
+	// initialize
+	$container.masonry({
+	  itemSelector: '.tile',
+	  "gutter": 10
+	});
