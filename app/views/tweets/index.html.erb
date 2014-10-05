@@ -1,25 +1,27 @@
-<br/>
-<br/>
-<br/>
-<br/>
 <div class="page" id="" >
-	<nav class="sidebar light">
+	<div class="input-control select">
+		<%= select_tag "handle", options_for_select(@handles["handles"],@handles["handles"].first) %>
+	</div>
+<!-- 	<nav class="sidebar light">
 	    <ul>
-	    	<% @months.each do |month| %>
-		    	<li class="title"><a href="#"><%= month %></a></li>
-	    	<% end %>
+	    	<#% @months.each do |month| %>
+		    	<li class="title"><a href="#"><%#= month %></a></li>
+	    	<#% end %>
 	    </ul>
     </nav>
-<div class="input-control select">
-</div>
-<%= select_tag "handle", options_for_select(@handles["handles"],@handles["handles"].first) %>
+ -->
 <div class = "tweets">
+	<div class="container" id="masonry" >
+
 	<%= render partial: "tweet" %>
 </div>
-<div class = "ajax_loader" >
-	<%= image_tag "loader.gif" %>
 </div>
+	<center>
+		<div class = "ajax_loader" >
+			<%= image_tag "loader.gif" %>
+		</div>
+	</center>
 </div>
 
-
+<%= hidden_field_tag :last_id, @tweets.last.id %>
 
