@@ -21,7 +21,8 @@ $(document).ready(function(){
 	// initialize
 	$container.masonry({
 	  itemSelector: '.tile',
-	  "gutter": 10
+	  "gutter": 10,
+	  "transitionDuration": 0
 	});
 
 	$('li.title').on('click', function() {
@@ -54,9 +55,38 @@ $(document).ready(function(){
 	       $(".ajax_loader").show();
         },
 		complete: function(){
-		       $('.container').show();
+      
 		       $(".ajax_loader").hide();
 		  }
 		});
 	});
+
+function element_in_scroll(elem)
+{
+    var docViewTop = $(window).scrollTop();
+    var docViewBottom = docViewTop + $(window).height();
+ 
+    var elemTop = $(elem).offset().top;
+    var elemBottom = elemTop + $(elem).height();
+    return ((elemBottom <= docViewBottom) && (elemTop >= docViewTop));
+}
+
+$(document).scroll(function(e){
+    if (element_in_scroll(".ajax_loader")) {
+    	last_id = $("#last_id").val();
+    	handle = $('#handle :selected').text();
+            $.ajax({
+				type: "GET",
+				dataType : 'script',
+				data: {last_id: last_id, current_handle: handle},
+			    url: '/tweets/index', 
+			    beforeSend: function(){
+			       $(".ajax_loader").show();
+		        },
+				complete: function(){
+				       $(".ajax_loader").hide();
+				  }
+			});
+        };
+});
 });
