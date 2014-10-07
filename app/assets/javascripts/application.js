@@ -79,7 +79,7 @@ $(document).scroll(function(e){
             $.ajax({
 				type: "GET",
 				dataType : 'script',
-				data: {last_id: last_id, handle: handle},
+				data: {last_id: last_id, current_handle: handle},
 			    url: '/tweets/index', 
 			    beforeSend: function(){
 			       $(".ajax_loader").show();
