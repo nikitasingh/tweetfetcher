@@ -1,0 +1,17 @@
+<% if @last_id.nil? %>
+	$('.tweets').empty();
+	$('.tweets').html("<%= escape_javascript(render(:partial => 'new_tweet')) %>");
+	var $container = $('#masonry');
+	// initialize
+	$container.masonry({
+	  itemSelector: '.tile',
+	  "gutter": 10,
+	  "transitionDuration": 0
+	});
+<% else %>
+	$('#masonry').append("<%= escape_javascript(render(:partial => 'tweet')) %>")
+	var masonry = $('#masonry').data('masonry');
+	masonry.reloadItems();
+	masonry.layout();	
+<% end %>
+$("#last_id").val("<%= @tweets.last.id %>");
