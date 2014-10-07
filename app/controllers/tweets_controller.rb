@@ -2,7 +2,7 @@ class TweetsController < ApplicationController
   before_filter :set_twitter_config
   def index
   	@handle = params["handle"] ? params["handle"] : "TCS_News"
-    # @handle = params["current_handle"] if params["current_handle"]
+    @handle = params["current_handle"] if params["current_handle"]
     @last_id = !params["handle"].nil? ? nil : params["last_id"]
   	@tweets = params["last_id"].nil? ? @client.user_timeline(@handle, :count => 10) : @client.user_timeline(@handle, :count => 10, :max_id => @last_id)[1..-1]
     # @user_created_at = @tweets.first.user.created_at

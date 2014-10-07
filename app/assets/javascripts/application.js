@@ -18,6 +18,7 @@
 
 $(document).ready(function(){
 var $container = $('#masonry');
+$(".ajax_loader").hide();
 // initialize
 	$container.masonry({
 	  itemSelector: '.tile',
