@@ -6,6 +6,7 @@ class TweetsController < ApplicationController
     @last_id = !params["handle"].nil? ? nil : params["last_id"]
   	@tweets = @handles["feeds"].include?(@handle)? get_feeds : get_tweets(params)
     @dates = @tweets.map(&:created_at).map {|date| date.strftime("%d-%b-%Y")} .uniq
+    Rails.logger.debug "=====params====#{params.inspect}"
     @last_tweet_date = params["last_tweet_date"] if params["last_tweet_date"]
   	respond_to do |format|
   	  format.html
@@ -14,7 +15,7 @@ class TweetsController < ApplicationController
   end
 
   def get_tweets(params)
-    params["last_id"].nil? ? @client.user_timeline(@handle, :count => 20) : @client.user_timeline(@handle, :count => 10, :max_id => @last_id)[1..-1]
+    params["last_id"].nil? ? @client.user_timeline(@handle, :count => 200) : @client.user_timeline(@handle, :count => 200, :max_id => @last_id)[1..-1]
   end
 
   def get_feeds

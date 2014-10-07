@@ -8,21 +8,15 @@
 		  "transitionDuration": 0
 		});	
 	<% else %>
-		<% if @last_tweet_date == @dates.first %>
-			$('.container:last').append("<%= escape_javascript(render(:partial => 'new_tweet')) %>")
-			var masonry = $('.container:last').data('masonry');
-			masonry.reloadItems();
-			masonry.layout();
-		<% else %>
-			$('.tweets').append("<%= escape_javascript(render(:partial => 'tweet')) %>")
-			var $container = $('.container');
-			// initialize
-			$container.masonry({
-			  itemSelector: '.tile',
-			  "gutter": 10,
-			  "transitionDuration": 0
-			});	
-		<% end %>
+		$('.tweets').append("<%= escape_javascript(render(:partial => 'tweet')) %>")
+		var $container = $('.container');
+		// initialize
+		$container.masonry({
+		  itemSelector: '.tile',
+		  "gutter": 10,
+		  "transitionDuration": 0
+		});	
+
 	<% end %>
     $("#last_id").val("<%= @tweets.last.id %>");
     $("#last_tweet_date").val("<%= @tweets.last.created_at.strftime('%d-%b-%Y') %>");
