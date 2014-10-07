@@ -7,9 +7,10 @@
   <%= csrf_meta_tags %>
 </head>
 <nav class="navigation-bar dark fixed-top"><h2> <b>Happenings @ TCS </b></h2> 
-<div class="input-control select">
-					<%= select_tag "handle", options_for_select(@handles["handles"] + @handles["feeds"].keys ,@handles["handles"].first) %>
-</div></nav> 
+	<div class="input-control select">
+						<%= select_tag "handle", options_for_select(@handles["handles"] + @handles["feeds"].keys ,@handles["handles"].first) %>
+	</div>
+</nav> 
 
 <body class="metro">
 
