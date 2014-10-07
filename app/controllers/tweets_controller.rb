@@ -1,20 +1,24 @@
 class TweetsController < ApplicationController
   before_filter :set_twitter_config
   def index
-  	@handle = params["handle"] ? params["handle"] : "TCS_News"
+    @handle = params["handle"] ? params["handle"] : "TCS_News"
     @handle = params["current_handle"] if params["current_handle"]
-
-    Rails.logger.debug "=======@handle===#{@handle}"
     @last_id = !params["handle"].nil? ? nil : params["last_id"]
-    Rails.logger.debug "=========@last_id====#{@last_id}"
-  	@tweets = params["last_id"].nil? ? @client.user_timeline(@handle, :count => 10) : @client.user_timeline(@handle, :count => 10, :max_id => @last_id)[1..-1]
-    # @user_created_at = @tweets.first.user.created_at
-  	# @months = @tweets.map(&:created_at).map {|date| date.strftime("%B")} .uniq
-  	# month = params["month"] ? params["month"] : @tweets.first.created_at.strftime("%B")
+  	@tweets = @handles["feeds"].include?(@handle)? get_feeds : get_tweets(params)
+    @dates = @tweets.map(&:created_at).map {|date| date.strftime("%d-%b-%Y")} .uniq
+
   	respond_to do |format|
   	  format.html
       format.js
    end
+  end
+
+  def get_tweets(params)
+    params["last_id"].nil? ? @client.user_timeline(@handle, :count => 200) : @client.user_timeline(@handle, :count => 10, :max_id => @last_id)[1..-1]
+  end
+
+  def get_feeds
+
   end
 
   def set_twitter_config

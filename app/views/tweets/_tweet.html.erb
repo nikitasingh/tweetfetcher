@@ -1,12 +1,14 @@
-		<% @tweets.each do |tweet| %>
+<% @dates.each do |date| %>
+<div class="brand bg-dark opacity">
+	<span class="text">
+		<b><%= date %></b>
+	</span>
+</div>
+<div class="container" id="masonry" >
+	<% @tweets.each do |tweet| %>
+		<% if tweet.created_at.strftime("%d-%b-%Y") == date %>
 		    <div class = 'tile double <%= 'triple' if tweet.media.present?  %>'>
 				    <div class="tile-content">
-					    <div class="brand bg-dark opacity">
-							<span class="text">
-								<b><%= tweet.created_at.strftime("%d-%b-%Y") %></b>
-							</span>
-						</div>
-					    <br/>
 					    <%
 							linked = tweet.text.gsub( %r{http://[^\s<]+} ) do |url|
 							    "<a href='#{url}' class='text_link' target = 'blank'>#{url}</a>"
@@ -17,3 +19,6 @@
 				    </div>
 			</div>
 		<% end %>
+	<% end %>
+</div>
+<% end %>

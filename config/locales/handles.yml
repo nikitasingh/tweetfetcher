@@ -7,3 +7,7 @@ handles:
   - TCSITWiz
   - iONSMECloudERP
   - TCSWorld10K'
+
+
+feeds:
+  Insights: http://www.tcs.com/rss_feeds/pages/tlfeeds.aspx

@@ -17,7 +17,7 @@ body,
   -ms-box-sizing: border-box;
   -o-box-sizing: border-box;
   box-sizing: border-box;
-  margin:0 auto;
+  /*margin:0 auto;*/
 }
 article,
 aside,
@@ -4128,6 +4128,7 @@ a {
 .metro .navigation-bar-content .brand,
 .metro .navbar-content .brand {
   font-size: 18px;
+  width: 100%;
 }
 .metro .navigation-bar-content form,
 .metro .navbar-content form {
@@ -8738,6 +8739,12 @@ a {
 }
 .metro .bg-dark {
   background-color: #076fab !important;
+    border-radius: 5px;
+    color: white;
+    clear: both;
+    margin-bottom: 10px;
+    padding: 0.5%;
+    width: 1058px !important;
 }
 .metro .bg-darker {
   background-color: #222222 !important;

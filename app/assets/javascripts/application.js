@@ -17,7 +17,7 @@
 //= require_tree .
 
 $(document).ready(function(){
-var $container = $('#masonry');
+var $container = $('.container');
 $(".ajax_loader").hide();
 // initialize
 	$container.masonry({
@@ -52,12 +52,12 @@ $(".ajax_loader").hide();
 	    url: '/tweets/index',
 	    data: {handle: handle}, 
 	    beforeSend: function(){
-	       $('.container').hide();
+	       $('.tweets').hide();
 	       $(".ajax_loader").show();
         },
 		complete: function(){
-      
-		       $(".ajax_loader").hide();
+		    $(".ajax_loader").hide();
+		    $('.tweets').show();
 		  }
 		});
 	});
@@ -72,22 +72,22 @@ function element_in_scroll(elem)
     return ((elemBottom <= docViewBottom) && (elemTop >= docViewTop));
 }
 
-$(document).scroll(function(e){
-    if (element_in_scroll(".ajax_loader")) {
-    	last_id = $("#last_id").val();
-    	handle = $('#handle :selected').text();
-            $.ajax({
-				type: "GET",
-				dataType : 'script',
-				data: {last_id: last_id, current_handle: handle},
-			    url: '/tweets/index', 
-			    beforeSend: function(){
-			       $(".ajax_loader").show();
-		        },
-				complete: function(){
-				       $(".ajax_loader").hide();
-				  }
-			});
-        };
-});
+// $(document).scroll(function(e){
+//     if (element_in_scroll(".ajax_loader")) {
+//     	last_id = $("#last_id").val();
+//     	handle = $('#handle :selected').text();
+//             $.ajax({
+// 				type: "GET",
+// 				dataType : 'script',
+// 				data: {last_id: last_id, current_handle: handle},
+// 			    url: '/tweets/index', 
+// 			    beforeSend: function(){
+// 			       $(".ajax_loader").show();
+// 		        },
+// 				complete: function(){
+// 				       $(".ajax_loader").hide();
+// 				  }
+// 			});
+//         };
+// });
 });

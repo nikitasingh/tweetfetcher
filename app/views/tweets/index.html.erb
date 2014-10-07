@@ -1,19 +1,9 @@
 <div class="page" id="" >
 	<div class="input-control select">
-		<%= select_tag "handle", options_for_select(@handles["handles"],@handles["handles"].first) %>
+		<%= select_tag "handle", options_for_select(@handles["handles"] + @handles["feeds"].keys ,@handles["handles"].first) %>
 	</div>
-<!-- 	<nav class="sidebar light">
-	    <ul>
-	    	<#% @months.each do |month| %>
-		    	<li class="title"><a href="#"><%#= month %></a></li>
-	    	<#% end %>
-	    </ul>
-    </nav>
- -->
 <div class = "tweets">
-	<div class="container" id="masonry" >
-		<%= render partial: "tweet" %>
-	</div>
+  <%= render partial: "tweet" %>
 </div>
 	<center>
 		<div class = "ajax_loader" >
