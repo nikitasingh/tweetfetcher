@@ -857,6 +857,7 @@ a {
 .metro h6 {
   padding: 0;
   margin: 10px 0;
+  float: left;
 }
 .metro h1 {
   font-family: 'Segoe UI Light_', 'Open Sans Light', Verdana, Arial, Helvetica, sans-serif;
@@ -2500,7 +2501,7 @@ a {
 .metro .input-control.select {
   float: right;
   margin-right: 17%;
-  margin-bottom: 1%;
+  margin-top: 0.5%;
 }
 .metro .input-control.checkbox input[type="checkbox"],
 .metro .input-control.radio input[type="checkbox"],

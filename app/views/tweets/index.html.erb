@@ -1,7 +1,4 @@
 <div class="page" id="" >
-	<div class="input-control select">
-		<%= select_tag "handle", options_for_select(@handles["handles"] + @handles["feeds"].keys ,@handles["handles"].first) %>
-	</div>
 <div class = "tweets">
   <%= render partial: "tweet" %>
 </div>
