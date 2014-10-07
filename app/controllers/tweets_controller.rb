@@ -6,7 +6,7 @@ class TweetsController < ApplicationController
     @last_id = !params["handle"].nil? ? nil : params["last_id"]
   	@tweets = @handles["feeds"].include?(@handle)? get_feeds : get_tweets(params)
     @dates = @tweets.map(&:created_at).map {|date| date.strftime("%d-%b-%Y")} .uniq
-
+    @last_tweet_date = params["last_tweet_date"] if params["last_tweet_date"]
   	respond_to do |format|
   	  format.html
       format.js

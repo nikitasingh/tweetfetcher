@@ -1,24 +1,26 @@
 <% @dates.each do |date| %>
-<div class="brand bg-dark opacity">
-	<span class="text">
-		<b><%= date %></b>
-	</span>
-</div>
-<div class="container" id="masonry" >
-	<% @tweets.each do |tweet| %>
-		<% if tweet.created_at.strftime("%d-%b-%Y") == date %>
-		    <div class = 'tile double <%= 'triple' if tweet.media.present?  %>'>
-				    <div class="tile-content">
-					    <%
-							linked = tweet.text.gsub( %r{http://[^\s<]+} ) do |url|
-							    "<a href='#{url}' class='text_link' target = 'blank'>#{url}</a>"
-							end
-						%>
-					    <span class="text"><%= linked.html_safe %></span>
-					    <span> <%= image_tag(tweet.media[0]["media_url"], :size => tweet.media[0]["sizes"]["thumb"]) if(tweet.media.present?) %> </span>
-				    </div>
-			</div>
-		<% end %>
+	<% if @last_tweet_date != date %>
+		<div class="brand bg-dark opacity">
+			<span class="text">
+				<b><%= date %></b>
+			</span>
+		</div>
 	<% end %>
-</div>
+	<div class="container" id="masonry" >
+		<% @tweets.each do |tweet| %>
+			<% if tweet.created_at.strftime("%d-%b-%Y") == date %>
+			    <div class = 'tile double <%= 'triple' if tweet.media.present?  %>'>
+					    <div class="tile-content">
+						    <%
+								linked = tweet.text.gsub( %r{http://[^\s<]+} ) do |url|
+								    "<a href='#{url}' class='text_link' target = 'blank'>#{url}</a>"
+								end
+							%>
+						    <span class="text"><%= linked.html_safe %></span>
+						    <span> <%= image_tag(tweet.media[0]["media_url"], :size => tweet.media[0]["sizes"]["thumb"]) if(tweet.media.present?) %> </span>
+					    </div>
+				</div>
+			<% end %>
+		<% end %>
+	</div>
 <% end %>

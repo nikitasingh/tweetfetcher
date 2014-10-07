@@ -72,22 +72,23 @@ function element_in_scroll(elem)
     return ((elemBottom <= docViewBottom) && (elemTop >= docViewTop));
 }
 
-// $(document).scroll(function(e){
-//     if (element_in_scroll(".ajax_loader")) {
-//     	last_id = $("#last_id").val();
-//     	handle = $('#handle :selected').text();
-//             $.ajax({
-// 				type: "GET",
-// 				dataType : 'script',
-// 				data: {last_id: last_id, current_handle: handle},
-// 			    url: '/tweets/index', 
-// 			    beforeSend: function(){
-// 			       $(".ajax_loader").show();
-// 		        },
-// 				complete: function(){
-// 				       $(".ajax_loader").hide();
-// 				  }
-// 			});
-//         };
-// });
+$(document).scroll(function(e){
+    if (element_in_scroll(".ajax_loader")) {
+    	last_id = $("#last_id").val();
+    	last_tweet_date = $("#last_tweet_date").val();
+    	handle = $('#handle :selected').text();
+            $.ajax({
+				type: "GET",
+				dataType : 'script',
+				data: {last_id: last_id, current_handle: handle, last_tweet_date: last_tweet_date},
+			    url: '/tweets/index', 
+			    beforeSend: function(){
+			       $(".ajax_loader").show();
+		        },
+				complete: function(){
+				       $(".ajax_loader").hide();
+				  }
+			});
+        };
+});
 });
