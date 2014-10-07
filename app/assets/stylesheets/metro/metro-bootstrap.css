@@ -1123,8 +1123,8 @@ a {
   line-height: 10pt;
 }
 .metro .container {
-  margin: 0 auto;
-  width: 100% !important;
+  width: 1200px !important;
+
 }
 .metro .page {
   width: 100%;

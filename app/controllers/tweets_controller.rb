@@ -14,7 +14,7 @@ class TweetsController < ApplicationController
   end
 
   def get_tweets(params)
-    params["last_id"].nil? ? @client.user_timeline(@handle, :count => 200) : @client.user_timeline(@handle, :count => 10, :max_id => @last_id)[1..-1]
+    params["last_id"].nil? ? @client.user_timeline(@handle, :count => 20) : @client.user_timeline(@handle, :count => 10, :max_id => @last_id)[1..-1]
   end
 
   def get_feeds
