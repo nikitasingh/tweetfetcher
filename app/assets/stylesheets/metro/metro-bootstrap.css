@@ -932,7 +932,7 @@ a {
 }
 .metro a,
 .metro .link {
-  color: #fff;
+  /*color: #fff;*/
 }
 .metro a:hover,
 .metro .link:hover {
@@ -4875,7 +4875,7 @@ a {
   height: 380px;
 }
 .metro .tile.quadro {
-  width: 510px;
+  width: 1058px;
 }
 .metro .tile.quadro-vertical {
   height: 510px;

@@ -7,7 +7,7 @@
 		</div>
 	<% end %>
 	<div class="container" id="masonry" >
-		<% @tweets.each do |tweet| %>
+		<% @result.each do |tweet| %>
 			<% if tweet.created_at.strftime("%d-%b-%Y") == date %>
 			    <div class = 'tile double <%= 'triple' if tweet.media.present?  %>'>
 					    <div class="tile-content">

@@ -1,12 +1,12 @@
 class TweetsController < ApplicationController
   before_filter :set_twitter_config
+  # encoding: utf-8
+  require 'simple-rss'
   def index
     @handle = params["handle"] ? params["handle"] : "TCS_News"
     @handle = params["current_handle"] if params["current_handle"]
     @last_id = !params["handle"].nil? ? nil : params["last_id"]
-  	@tweets = @handles["feeds"].include?(@handle)? get_feeds : get_tweets(params)
-    @dates = @tweets.map(&:created_at).map {|date| date.strftime("%d-%b-%Y")} .uniq
-    Rails.logger.debug "=====params====#{params.inspect}"
+  	@result = @handles["feeds"].include?(@handle)? get_feeds(params) : get_tweets(params)
     @last_tweet_date = params["last_tweet_date"] if params["last_tweet_date"]
   	respond_to do |format|
   	  format.html
@@ -15,11 +15,13 @@ class TweetsController < ApplicationController
   end
 
   def get_tweets(params)
-    params["last_id"].nil? ? @client.user_timeline(@handle, :count => 200) : @client.user_timeline(@handle, :count => 200, :max_id => @last_id)[1..-1]
+    tweets = params["last_id"].nil? ? @client.user_timeline(@handle, :count => 200) : @client.user_timeline(@handle, :count => 200, :max_id => @last_id)[1..-1]
+    @dates = tweets.map(&:created_at).map {|date| date.strftime("%d-%b-%Y")} .uniq
+    tweets
   end
 
-  def get_feeds
-
+  def get_feeds(params)
+    rss = SimpleRSS.parse open(@handles["feeds"][params["handle"]])
   end
 
   def set_twitter_config

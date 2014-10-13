@@ -18,8 +18,8 @@
 		});	
 
 	<% end %>
-    $("#last_id").val("<%= @tweets.last.id %>");
-    $("#last_tweet_date").val("<%= @tweets.last.created_at.strftime('%d-%b-%Y') %>");
+    $("#last_id").val("<%= @result.last.id %>");
+    $("#last_tweet_date").val("<%= @result.last.created_at.strftime('%d-%b-%Y') %>");
 <% else %>
 	$('.tweets').html("<%= escape_javascript(render(:partial => 'feed')) %>");
 <% end %>

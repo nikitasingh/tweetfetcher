@@ -1,1 +1,23 @@
-feeds
+<!-- encoding: UTF-8 -->
+<% @result.items.each do |item| %>
+	<div class="brand bg-dark opacity">
+		<span class="text">
+			<b><%= item[:pubDate] %></b>			
+		</span>
+	</div>
+
+	<div class="feed_container">
+		<div class = 'tile quadro %>'>
+			    <div class="tile-content" style = "padding: 2% !important;">
+				   <b><%= item[:title].force_encoding('utf-8') %></b>
+				   <br/>
+				   <%= item[:description].force_encoding('utf-8').html_safe %>
+				   <br/>
+				    <%
+						item[:link]  
+						%>
+			    </div>
+		</div>
+		
+	</div>
+<% end %>
